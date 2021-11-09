@@ -10,4 +10,4 @@ function Image(url, name){
     totalImages.push(this);
 }
 //render image 
-let babymaid = document.getElementById(idname);
+
