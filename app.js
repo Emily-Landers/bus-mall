@@ -37,15 +37,21 @@ function pickImages() {
 
     do {
         Image.left = getRandomItem();
+        if (currentRound => 25)
+        break;
     } while (Image.left === oldLeft || Image.left === oldRight || Image.left === oldCenter);
 
     do {
         Image.right = getRandomItem();
+        if (currentRound => 25)
+        break;
     } while (Image.right === Image.left || Image.right === oldRight || Image.right === oldCenter);
 
     do {
         Image.right = getRandomItem();
-    } while (Image.center === Image.left || Image.center === Image.right || Image.center === oldRight || Image.center === oldCenter || Image.center === oldLeft);
+        if (currentRound => 25)
+        break;
+    } while (Image.center=== Image.left || Image.center === Image.right || Image.center === oldRight || Image.center === oldCenter || Image.center === oldLeft);
 }
 
 function renderImages() {
@@ -81,7 +87,7 @@ function attachEventListeners() {
 
 }
 
-function removeEventListeners() {
+function stopEventListeners() {
     const container = document.getElementById('pictures');
     container.removeEventListener('click', handleClick);
 }
@@ -102,7 +108,7 @@ function handleClick(event) {
     if (currentRound === 25) {
         document.getElementById('results').hidden = false;
 
-        removeEventListeners();
+        stopEventListeners();
         renderChart();
     } else {
         pickImages();
@@ -127,10 +133,7 @@ for (let i = 0; i < Image.totalImageInfo.length; i++){
 
     const ctx = document.getElementById('results-chart').getContext('2d');
     const imgChart = new Chart(ctx, {
-        // The type of chart we want to create
         type: 'bar',
-
-        // The data for our dataset
         data: {
             labels: imageNamesArray,
             datasets: [{
@@ -141,7 +144,6 @@ for (let i = 0; i < Image.totalImageInfo.length; i++){
             }]
         },
 
-        // Configuration options go here
         options: {
             scales: {
                 yAxes: [{
