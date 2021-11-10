@@ -33,25 +33,38 @@ function getRandomItem() {
 function pickImages() {
     const oldLeft = Image.left;
     const oldRight = Image.right;
-    const oldCenter = Image.center; 
+    const oldCenter = Image.center;
 
-    do {
+// while(currentRound < 25, currentRound ++){
+//     if(oldLeft.timesShown === currentRound -1){
+//        Image.left = getRandomItem();
+//     } else if (oldRight.timesShown === currentRound -1) {
+//         Image.right = getRandomItem();
+//     } else if (oldCenter.timesShown === currentRound -1){
+//         Image.center = getRandomItem();
+//     } else 
+
+// }
+    while (Image.left === Image.center || Image.left === Image.right || Image.left === oldRight || Image.left === oldCenter || Image.left === oldLeft){
         Image.left = getRandomItem();
-        if (currentRound => 25)
-        break;
-    } while (Image.left === oldLeft || Image.left === oldRight || Image.left === oldCenter);
+        // if (currentRound => 25){
+        // break;
+        // }
+    } 
 
-    do {
+    while (Image.right === Image.left || Image.right === Image.center || Image.right === oldRight || Image.right === oldCenter || Image.right === oldLeft){
         Image.right = getRandomItem();
-        if (currentRound => 25)
-        break;
-    } while (Image.right === Image.left || Image.right === oldRight || Image.right === oldCenter);
+        // if (currentRound => 25){
+        // break;
+        // }
+    } 
 
-    do {
-        Image.right = getRandomItem();
-        if (currentRound => 25)
-        break;
-    } while (Image.center=== Image.left || Image.center === Image.right || Image.center === oldRight || Image.center === oldCenter || Image.center === oldLeft);
+    while (Image.center === Image.left || Image.center === Image.right || Image.center === oldRight || Image.center === oldCenter || Image.center === oldLeft){
+        Image.center = getRandomItem();
+        // if (currentRound => 25){
+        // break;
+        // }
+    } 
 }
 
 function renderImages() {
